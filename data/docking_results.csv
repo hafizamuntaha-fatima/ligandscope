@@ -1,0 +1,7 @@
+receptor,pdb_id,ligand,best_affinity_kcal_mol,pose_file
+SpeB,2UZJ,EGCG,-7.574,dock_2uzj_EGCG.pdbqt
+SpeB,2UZJ,Thymoquinone,-4.578,dock_2uzj_Thymoquinone.pdbqt
+SpeB,2UZJ,Quercetin,-5.910,dock_2uzj_Quercetin.pdbqt
+SpeA,1B1Z,EGCG,-7.497,dock_1b1z_EGCG.pdbqt
+SpeA,1B1Z,Thymoquinone,-5.183,dock_1b1z_Thymoquinone.pdbqt
+SpeA,1B1Z,Quercetin,-7.123,dock_1b1z_Quercetin.pdbqt

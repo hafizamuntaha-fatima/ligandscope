@@ -1,0 +1,4 @@
+ligand,pubchem_cid,smiles,source_plant,class
+EGCG,65064,C1C(C(OC2=CC(=CC(=C21)O)O)C3=CC(=C(C(=C3)O)O)O)OC(=O)C4=CC(=C(C(=C4)O)O)O,Green tea (Camellia sinensis),Flavan-3-ol (catechin)
+Quercetin,5280343,C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O)O,"Onion, capers, many plants",Flavonol
+Thymoquinone,10281,CC1=CC(=O)C(=CC1=O)C(C)C,Black seed (Nigella sativa),Monoterpene quinone
