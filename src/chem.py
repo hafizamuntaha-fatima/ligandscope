@@ -13,7 +13,11 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 
 from rdkit import Chem
-from rdkit.Chem import Descriptors, Draw, Crippen, Lipinski, rdMolDescriptors
+from rdkit.Chem import Descriptors, Crippen, Lipinski, rdMolDescriptors
+# NOTE: rdkit.Chem.Draw is imported lazily inside draw_molecule() — its drawing
+# backend needs system libraries (libXrender etc.) that are provided via
+# packages.txt on Streamlit Cloud. Keeping it out of the top-level import means
+# the rest of the app still runs even if drawing is unavailable.
 
 
 @dataclass
@@ -87,11 +91,21 @@ def profile_molecule(smiles: str) -> MolProfile | None:
 
 
 def draw_molecule(smiles: str, size: tuple[int, int] = (350, 300)):
-    """Return a 2D structure image (PIL) for the given SMILES, or None."""
+    """
+    Return a 2D structure image (PIL) for the given SMILES, or None.
+
+    Draw is imported here (not at module top) and wrapped in try/except so a
+    missing drawing backend degrades gracefully to 'no image' instead of
+    crashing the whole app.
+    """
     mol = mol_from_smiles(smiles)
     if mol is None:
         return None
-    return Draw.MolToImage(mol, size=size)
+    try:
+        from rdkit.Chem import Draw
+        return Draw.MolToImage(mol, size=size)
+    except Exception:
+        return None
 
 
 def profile_to_dict(profile: MolProfile) -> dict:
